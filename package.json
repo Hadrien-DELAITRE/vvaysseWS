@@ -1,0 +1,22 @@
+{
+  "name": "vvayssews",
+  "version": "0.0.0",
+  "description": "Victor Vaysse Website",
+  "dependencies": {
+    "nuxt": "^1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hadrien-DELAITRE/vvaysseWS.git"
+  },
+  "author": "Hadrien DELAITRE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hadrien-DELAITRE/vvaysseWS/issues"
+  },
+  "homepage": "https://github.com/Hadrien-DELAITRE/vvaysseWS#readme"
+}
