@@ -5,10 +5,21 @@
   "dependencies": {
     "nuxt": "^1.4.0"
   },
-  "devDependencies": {},
-  "scripts": {
-    "dev": "nuxt"
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-vue": "^4.3.0",
+    "prettier": "^1.11.1"
   },
+  "scripts": {
+    "dev": "nuxt",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
+  },
+  "pre-commit": ["lint"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Hadrien-DELAITRE/vvaysseWS.git"
