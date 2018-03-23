@@ -3,10 +3,19 @@
   "version": "0.0.0",
   "description": "Victor Vaysse Website",
   "dependencies": {
+    "@nuxtjs/axios": "^5.1.1",
+    "apicache": "^1.2.1",
+    "backpack-core": "^0.7.0",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "find-up": "^2.1.0",
+    "lodash": "^4.17.5",
     "nuxt": "^1.4.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
+    "babel-preset-bluebird": "^1.0.1",
     "eslint": "^4.19.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-loader": "^2.0.0",
@@ -16,6 +25,7 @@
   },
   "scripts": {
     "dev": "nuxt",
+    "api": "backpack",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
   },
@@ -29,5 +39,16 @@
   "bugs": {
     "url": "https://github.com/Hadrien-DELAITRE/vvaysseWS/issues"
   },
-  "homepage": "https://github.com/Hadrien-DELAITRE/vvaysseWS#readme"
+  "homepage": "https://github.com/Hadrien-DELAITRE/vvaysseWS#readme",
+  "config": {
+    "api": {
+      "hostname": "localhost",
+      "port": 8001,
+      "protocol": "http:",
+      "images": {
+        "dirPath": "www/static/images/portfolio",
+        "cache": "1 minute"
+      }
+    }
+  }
 }

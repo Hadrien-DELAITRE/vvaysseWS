@@ -6,8 +6,10 @@
 
 ## Installation
 
-This project uses [Nuxt](https://nuxtjs.org/) framework, checkout their website
-for any documentation.
+There is two servers to install:
+
+* Render server, with [Nuxt](https://nuxtjs.org/) framework.
+* API server, with [Backpack](https://github.com/jaredpalmer/backpack).
 
 First, use this command to clone this project into your machine.
 
@@ -24,13 +26,19 @@ $> cd vvaysseWS
 $> npm install
 ```
 
-Finally, for development environment start the following command:
+In order to run servers (in development mode for the moment):
+
+* Render server, listening on http://localhost:3000 (not yet configurable).
 
 ```sh
 $> npm run dev
 ```
 
-The application is now running on http://localhost:3000.
+* API server, listening on `${protocol}//${hostname}:${port}`, see [configuration](#configuration):
+
+```sh
+$> npm run api
+```
 
 ## Development
 
@@ -49,3 +57,26 @@ $> npm run lintfix
 
 Consider to use prettier and eslint plugins with your own editor (Atom, Sublime
 Text, Xcode, ...).
+
+## Configuration
+
+Configuration of servers is defined in package.json file.
+It provides a property `config`:
+
+```js
+"config": {
+  "api": {
+    "hostname": "foo", // [string] Hostname portion of the URL.
+    "port": 1234, // [integer] Port portion of the URL.
+    "protocol": "http:", // [string] Protocol portion of the URL.
+    "images": {
+      // [string] Url path of images. WARN: has to be defined in Nuxt static
+      // folder.
+      "dirPath": "foo/bar/baz",
+      // [string] Duration of images route cache ([length] [unit] as "10
+      // minutes" or "1 day").
+      "cache": "1 minute",
+    }
+  },
+}
+```
