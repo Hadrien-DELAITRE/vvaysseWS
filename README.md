@@ -69,22 +69,19 @@ It provides a property `config`:
     "hostname": "foo", // [string] Hostname portion of the URL.
     "port": 1234, // [integer] Port portion of the URL.
     "protocol": "http:", // [string] Protocol portion of the URL.
+    "srcDir": "api", // [string] Url path of source API folder.
     "images": {
       // [string] Duration of images route cache ([length] [unit] as "10
       // minutes" or "1 day").
       "cache": "1 minute",
+      // [string] Url path of portfolio images.
+      "portfolioDirPath": "foo/bar/baz",
     }
   },
   "www": {
     "hostname": "foo", // [string] Hostname portion of the URL.
     "port": 1234, // [integer] Port portion of the URL.
-    "srcDir": "www", // [string] Url path of source nuxt folder.
-    // [string] Url path of static nuxt folder. WARN: can't be modified, Nuxt
-    // doesn't provide this possibility.
-    "staticDirPath": "www/static",
-    // [string] Url path of portfolio images. WARN: has to be defined in Nuxt
-    // static folder.
-    "portfolioDirPath": "www/static/foo/bar/baz",
+    "srcDir": "www", // [string] Url path of source WWW folder.
   }
 }
 ```

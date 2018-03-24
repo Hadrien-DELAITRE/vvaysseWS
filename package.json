@@ -46,16 +46,16 @@
       "hostname": "localhost",
       "port": 8001,
       "protocol": "http:",
+      "srcDir": "api",
       "images": {
-        "cache": "1 minute"
+        "cache": "1 minute",
+        "portfolioDirPath": "api/portfolio"
       }
     },
     "www": {
       "hostname": "localhost",
       "port": 8889,
-      "srcDir": "www",
-      "staticDirPath": "www/static",
-      "portfolioDirPath": "www/static/images/portfolio"
+      "srcDir": "www"
     }
   }
 }

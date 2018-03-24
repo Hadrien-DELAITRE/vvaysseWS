@@ -6,11 +6,9 @@
 </template>
 
 <script>
-import path from "path"
 import url from "url"
 
 import axios from "axios"
-import _ from "lodash"
 
 import ImageList from "~/components/ImageList.vue"
 
@@ -35,15 +33,8 @@ export default {
     })
     const { data: images } = await axios.get(imagesApiUrl)
 
-    const { portfolioDirPath, staticDirPath } = store.state.config.app.www
-
     return {
-      images: _.map(images, ({ fileName }) => ({
-        imageUrlPath: path.join(
-          portfolioDirPath.replace(staticDirPath, ""),
-          fileName
-        )
-      }))
+      images
     }
   }
 }

@@ -4,16 +4,6 @@ const express = require("express")
 const { config } = require("../package.json")
 const nuxtConfig = require("../nuxt.config.js")
 
-const STATIC_DIR_PATH = `${nuxtConfig.srcDir}/static`
-
-// Throws if static dir path is not named `STATIC_DIR_PATH`.
-if (!config.www.staticDirPath.startsWith(STATIC_DIR_PATH)) {
-  throw TypeError(`
-    WWW configuration error 'staticDirPath':
-    expected '${config.www.staticDirPath}' to be '${STATIC_DIR_PATH}'.
-  `)
-}
-
 // Instanciates Nuxt.js with options.
 const nuxt = new Nuxt(nuxtConfig)
 
