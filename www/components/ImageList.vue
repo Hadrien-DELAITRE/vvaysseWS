@@ -16,9 +16,13 @@ import ImageItem from "./ImageItem.vue"
 export default {
   components: { ImageItem },
 
-  data() {
-    return {
-      images: [{ name: "Foo" }, { name: "Bar" }]
+  /**
+   * @prop {Array<Object>} images Array containing images as object.
+   */
+  props: {
+    images: {
+      type: Array,
+      required: true
     }
   }
 }

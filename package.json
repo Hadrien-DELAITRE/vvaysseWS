@@ -21,10 +21,11 @@
     "eslint-loader": "^2.0.0",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-vue": "^4.3.0",
+    "pre-commit": "^1.2.2",
     "prettier": "^1.11.1"
   },
   "scripts": {
-    "dev": "nuxt",
+    "www": "node www/index.js",
     "api": "backpack",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
@@ -46,9 +47,15 @@
       "port": 8001,
       "protocol": "http:",
       "images": {
-        "dirPath": "www/static/images/portfolio",
         "cache": "1 minute"
       }
+    },
+    "www": {
+      "hostname": "localhost",
+      "port": 8889,
+      "srcDir": "www",
+      "staticDirPath": "www/static",
+      "portfolioDirPath": "www/static/images/portfolio"
     }
   }
 }

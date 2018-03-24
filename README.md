@@ -8,7 +8,7 @@
 
 There is two servers to install:
 
-* Render server, with [Nuxt](https://nuxtjs.org/) framework.
+* WWW server, with [Nuxt](https://nuxtjs.org/) framework.
 * API server, with [Backpack](https://github.com/jaredpalmer/backpack).
 
 First, use this command to clone this project into your machine.
@@ -28,10 +28,10 @@ $> npm install
 
 In order to run servers (in development mode for the moment):
 
-* Render server, listening on http://localhost:3000 (not yet configurable).
+* WWW server, listening on `${protocol}//${hostname}:${port}`, see [configuration](#configuration).
 
 ```sh
-$> npm run dev
+$> npm run www
 ```
 
 * API server, listening on `${protocol}//${hostname}:${port}`, see [configuration](#configuration):
@@ -70,13 +70,21 @@ It provides a property `config`:
     "port": 1234, // [integer] Port portion of the URL.
     "protocol": "http:", // [string] Protocol portion of the URL.
     "images": {
-      // [string] Url path of images. WARN: has to be defined in Nuxt static
-      // folder.
-      "dirPath": "foo/bar/baz",
       // [string] Duration of images route cache ([length] [unit] as "10
       // minutes" or "1 day").
       "cache": "1 minute",
     }
   },
+  "www": {
+    "hostname": "foo", // [string] Hostname portion of the URL.
+    "port": 1234, // [integer] Port portion of the URL.
+    "srcDir": "www", // [string] Url path of source nuxt folder.
+    // [string] Url path of static nuxt folder. WARN: can't be modified, Nuxt
+    // doesn't provide this possibility.
+    "staticDirPath": "www/static",
+    // [string] Url path of portfolio images. WARN: has to be defined in Nuxt
+    // static folder.
+    "portfolioDirPath": "www/static/foo/bar/baz",
+  }
 }
 ```

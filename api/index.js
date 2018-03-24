@@ -18,7 +18,7 @@ app.use(bodyParser.json())
 
 // Defines images dir path.
 const rootDirName = path.dirname(findUp.sync(".rootDir", { cwd: __dirname }))
-const IMAGES_DIR_PATH = path.join(rootDirName, config.api.images.dirPath)
+const IMAGES_DIR_PATH = path.join(rootDirName, config.www.portfolioDirPath)
 
 /**
  * Defines /images route.
