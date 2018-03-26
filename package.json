@@ -4,6 +4,7 @@
   "description": "Victor Vaysse Website",
   "dependencies": {
     "@nuxtjs/axios": "^5.1.1",
+    "api-error-handler": "^1.0.0",
     "apicache": "^1.2.1",
     "backpack-core": "^0.7.0",
     "bluebird": "^3.5.1",

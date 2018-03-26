@@ -3,6 +3,7 @@ import path from "path"
 import url from "url"
 
 import { middleware as cache } from "apicache"
+import errorHandler from "api-error-handler"
 import bodyParser from "body-parser"
 import express from "express"
 import findUp from "find-up"
@@ -10,6 +11,7 @@ import _ from "lodash"
 
 import { config } from "../package.json"
 import { listFilesFromDirPath } from "./lib/files"
+import asyncError from "./middlewares/asyncError"
 
 Promise.promisifyAll(fs)
 
@@ -26,14 +28,14 @@ const IMAGES_DIR_PATH = path.join(
 // Retrieves API server connection data.
 const { hostname, port, protocol } = config.api
 
-const app = express()
+const api = express()
 
 // Specifies our API to use JSON as content-type formatting.
-app.use(bodyParser.json())
+api.use(bodyParser.json())
 
 // Serves portfolio on static server files.
 
-app.use(
+api.use(
   PORTFOLIO_STATIC_URL,
   express.static(config.api.images.portfolioDirPath)
 )
@@ -50,21 +52,27 @@ app.use(
  * @param  {Object} res HTTP response to send.
  * @return {Array<Object>} Returns all filenames.
  */
-app.get("/images", cache(config.api.images.cache), async function(req, res) {
-  const images = await listFilesFromDirPath(IMAGES_DIR_PATH)
-  res.send(
-    _.map(images, ({ fileName }) => ({
-      imageUrlPath: url.format({
-        hostname,
-        port,
-        protocol,
-        pathname: path.join(PORTFOLIO_STATIC_URL, fileName)
-      })
-    }))
-  )
-})
+api.get(
+  "/images",
+  cache(config.api.images.cache),
+  asyncError(async function(req, res) {
+    const images = await listFilesFromDirPath(IMAGES_DIR_PATH)
+    res.send(
+      _.map(images, ({ fileName }) => ({
+        imageUrlPath: url.format({
+          hostname,
+          protocol,
+          pathname: path.join(PORTFOLIO_STATIC_URL, fileName)
+        })
+      }))
+    )
+  })
+)
+
+// Defines error handler middleware for JSON result.
+api.use(errorHandler())
 
 // Starts API with port and hostname retrieved from config.
-app.listen(config.api.port, config.api.hostname, function() {
-  console.log(`API listening on port ${config.api.port}`)
+api.listen(port, hostname, function() {
+  console.log(`API listening on port ${port}`)
 })

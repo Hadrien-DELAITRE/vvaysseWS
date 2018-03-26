@@ -30,7 +30,9 @@ export default {
       protocol,
       pathname: "images"
     })
-    const { data: images } = await axios.get(imagesApiUrl)
+    const { data: images } = await axios.get(imagesApiUrl).catch(() => ({
+      data: []
+    }))
 
     return {
       images
