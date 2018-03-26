@@ -24,10 +24,9 @@ export default {
    * @return {Object} Returns images from HTTP API result.
    */
   async asyncData({ store }) {
-    const { hostname, port, protocol } = store.state.config.app.api
+    const { hostname, protocol } = store.state.config.app.api
     const imagesApiUrl = url.format({
       hostname,
-      port,
       protocol,
       pathname: "images"
     })

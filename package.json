@@ -10,6 +10,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "find-up": "^2.1.0",
+    "http-proxy": "^1.16.2",
     "lodash": "^4.17.5",
     "nuxt": "^1.4.0"
   },
@@ -25,12 +26,15 @@
     "prettier": "^1.11.1"
   },
   "scripts": {
-    "www": "node www/index.js",
-    "api": "backpack",
+    "www": "node ./www/index.js",
+    "api": "BACKPACK_ENTRY=api backpack",
+    "proxy": "BACKPACK_ENTRY=proxy backpack",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
   },
-  "pre-commit": ["lint"],
+  "pre-commit": [
+    "lint"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Hadrien-DELAITRE/vvaysseWS.git"
@@ -43,8 +47,8 @@
   "homepage": "https://github.com/Hadrien-DELAITRE/vvaysseWS#readme",
   "config": {
     "api": {
-      "hostname": "localhost",
-      "port": 8001,
+      "hostname": "api.vvaysse.com",
+      "port": 7000,
       "protocol": "http:",
       "srcDir": "api",
       "images": {
@@ -53,9 +57,16 @@
       }
     },
     "www": {
-      "hostname": "localhost",
-      "port": 8889,
-      "srcDir": "www"
+      "hostname": "www.vvaysse.com",
+      "port": 7070,
+      "srcDir": "www",
+      "protocol": "http:"
+    },
+    "proxy": {
+      "hostname": "www.vvaysse.com",
+      "port": 80,
+      "srcDir": "proxy",
+      "protocol": "http:"
     }
   }
 }
