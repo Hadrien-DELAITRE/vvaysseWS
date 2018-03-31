@@ -1,0 +1,10 @@
+// This file defines global fonts to be used over all scss styles in codebase.
+
+// Returns item width according given gutter and items per row
+// $gutterWidth {Integer} Width of the gutter.
+// $itemsPerRow {Integer} Items per row.
+@function getItemWidth($gutterWidth, $itemsPerRow) {
+  @return calc(
+    (100% - (#{$gutterWidth} * (#{$itemsPerRow} - 1))) / #{$itemsPerRow}
+  );
+}

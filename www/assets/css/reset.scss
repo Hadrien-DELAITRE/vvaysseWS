@@ -1,0 +1,29 @@
+// This file defines global fonts to be used over all scss styles in codebase.
+
+html {
+  box-sizing: border-box;
+  font-family: Arial;
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ol li,
+ul li {
+  list-style: none;
+}
+
+body {
+  margin: 0;
+}

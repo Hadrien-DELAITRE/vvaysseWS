@@ -13,18 +13,28 @@
     "find-up": "^2.1.0",
     "http-proxy": "^1.16.2",
     "lodash": "^4.17.5",
-    "nuxt": "^1.4.0"
+    "nuxt": "^1.4.0",
+    "nuxt-sass-resources-loader": "^1.2.0",
+    "vue-affix": "^0.2.4",
+    "vue-awesome": "^2.3.5",
+    "vue-lazyload": "^1.2.2",
+    "vue-svg-loader": "^0.5.0",
+    "webpack-node-externals": "^1.6.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
     "babel-preset-bluebird": "^1.0.1",
+    "css-loader": "^0.28.11",
     "eslint": "^4.19.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-vue": "^4.3.0",
+    "node-sass": "^4.8.3",
     "pre-commit": "^1.2.2",
-    "prettier": "^1.11.1"
+    "prettier": "^1.11.1",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3"
   },
   "scripts": {
     "www": "node ./www/index.js",

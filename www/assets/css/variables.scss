@@ -1,0 +1,23 @@
+// This file defines global variables to be used over all scss styles in
+// codebase.
+
+// Defines style breakpoints.
+$S: 360px;
+$M: 768px;
+
+$breakpoint-s: "screen and (min-width: #{$S})";
+$breakpoint-m: "screen and (min-width: #{$M})";
+
+$breakpoint-xs-s: "screen and (max-width: #{$S - 1})";
+$breakpoint-s-m: "screen and (min-width: #{$S}) and (max-width: #{$M - 1})";
+
+$breakpoint-s-max: "screen and (max-width: #{$S - 1})";
+$breakpoint-m-max: "screen and (max-width: #{$M - 1})";
+
+// Defines style indexes.
+$menu-sticky-index: 1000000;
+$menu-logo-circle-index: -1;
+$menu-logo-circle-shadow-index: -2;
+
+// Defines style gutter.
+$image-list-gutter: 10px;
