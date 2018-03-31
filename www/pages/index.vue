@@ -1,6 +1,6 @@
 <template>
-  <main>
-    <h1>Hello world !</h1>
+  <main class="main">
+    <Menu />
     <ImageList :images="images"/>
   </main>
 </template>
@@ -11,9 +11,11 @@ import url from "url"
 import axios from "axios"
 
 import ImageList from "~/components/ImageList.vue"
+import Menu from "~/components/Menu/Menu.vue"
 
 export default {
   components: {
+    Menu,
     ImageList
   },
 
@@ -40,3 +42,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.main {
+  margin: 0;
+  background-color: $main-background-color;
+}
+</style>
