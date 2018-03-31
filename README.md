@@ -1,4 +1,4 @@
-# Victor Vayse Website
+# Victor Vaysse Website
 
 ## Pre-requisites
 
