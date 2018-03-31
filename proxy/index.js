@@ -5,7 +5,11 @@ import httpProxy from "http-proxy"
 
 import { config } from "../package.json"
 
-const proxy = httpProxy.createProxyServer({})
+let proxy = httpProxy.createProxyServer({})
+proxy.on("error", function(error) {
+  console.error(error)
+  proxy = httpProxy.createProxyServer({})
+})
 
 const apiConfig = config.api
 const apiUrl = url.format({
@@ -46,9 +50,13 @@ const reverseProxy = express()
  */
 reverseProxy.use("/", function(req, res) {
   if (req.get("host") === apiConfig.hostname) {
-    proxy.web(req, res, { target: apiUrl })
+    proxy.web(req, res, { target: apiUrl }, function(error) {
+      res.status(500).send(error.message)
+    })
   } else {
-    proxy.web(req, res, { target: wwwUrl })
+    proxy.web(req, res, { target: wwwUrl }, function(error) {
+      res.status(500).send(error.message)
+    })
   }
 })
 
