@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul>
+    <ul class="imageList">
       <ImageItem
         v-for="(image, index) in images"
         :key="index"
@@ -27,3 +27,21 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.imageList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-left: $image-list-gutter;
+  padding-right: $image-list-gutter;
+
+  &::after {
+    content: "";
+    width: getItemWidth(10px, 2);
+
+    @media #{$breakpoint-s-m} {
+      width: getItemWidth(10px, 3);
+    }
+  }
+}
+</style>
