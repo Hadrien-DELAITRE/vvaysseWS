@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ImageItem from "./ImageItem.vue"
+import ImageItem from "~/components/Portfolio/ImageItem.vue"
 
 export default {
   components: { ImageItem },
