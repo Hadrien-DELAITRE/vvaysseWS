@@ -1,6 +1,10 @@
 <template>
   <li class="imageItem">
-    <div v-lazy:background-image="`${image.imageUrlPath}`" class="thumbnailImage">
+    <div
+      v-lazy:background-image="`${image.imageUrlPath}`"
+      class="thumbnailImage"
+      @click="expand"
+    >
       <div class="iconWrapper">
         <icon name="camera" class="camera" scale="1" />
       </div>
@@ -17,6 +21,19 @@ export default {
     image: {
       type: Object,
       required: true
+    }
+  },
+
+  methods: {
+    /**
+     * Toggles "on" for expanding image using Vuex `isExpanded` store.
+     * It provides data about image URL path.
+     */
+    expand: function() {
+      this.$store.commit("toggle", {
+        isExpanded: true,
+        imageUrlPath: this.image.imageUrlPath
+      })
     }
   }
 }
@@ -76,6 +93,8 @@ export default {
 
     margin-bottom: $image-list-gutter;
     border-radius: 4px;
+
+    cursor: pointer;
 
     .iconWrapper {
       animation: bounce 0.5s ease infinite;

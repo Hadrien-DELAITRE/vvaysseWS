@@ -3,6 +3,7 @@ import Vuex from "vuex"
 // Hook here different store modules. @see
 // https://vuex.vuejs.org/fr/modules.html
 import config from "./config"
+import isExpanded from "./isExpanded"
 
 /**
  * Creates store that contains our app state.
@@ -13,7 +14,8 @@ import config from "./config"
 const createStore = () => {
   return new Vuex.Store({
     modules: {
-      config
+      config,
+      isExpanded
     }
   })
 }

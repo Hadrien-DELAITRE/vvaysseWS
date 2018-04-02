@@ -35,7 +35,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .portfolio {
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 
   .yearTitle {
     display: flex;

@@ -15,6 +15,7 @@ $breakpoint-s-max: "screen and (max-width: #{$S - 1})";
 $breakpoint-m-max: "screen and (max-width: #{$M - 1})";
 
 // Defines style indexes.
+$image-expanded-index: 2000000;
 $menu-sticky-index: 1000000;
 $menu-logo-circle-index: -1;
 $menu-logo-circle-shadow-index: -2;

@@ -2,6 +2,7 @@
   <main class="main">
     <Menu />
     <Portfolio :portfolio="portfolio"/>
+    <ExpandedImage />
   </main>
 </template>
 
@@ -12,6 +13,7 @@ import url from "url"
 import axios from "axios"
 import _ from "lodash"
 
+import ExpandedImage from "~/components/ExpandedImage/ExpandedImage.vue"
 import Portfolio from "~/components/Portfolio/Portfolio.vue"
 import Menu from "~/components/Menu/Menu.vue"
 
@@ -20,7 +22,8 @@ const yearRegex = /^(\d{4}).*/
 export default {
   components: {
     Menu,
-    Portfolio
+    Portfolio,
+    ExpandedImage
   },
 
   /**
