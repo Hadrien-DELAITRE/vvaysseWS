@@ -55,7 +55,11 @@ module.exports = {
       })
     ]
   },
-  plugins: ["~plugins/vueAwesome.js", "~plugins/vueLazyload.js"],
+  plugins: [
+    "~plugins/vueAwesome.js",
+    "~plugins/vueLazyload.js",
+    { src: "~/plugins/vueMasonry", ssr: false }
+  ],
   css: [
     "@/assets/css/animations.scss",
     "@/assets/css/colors.scss",

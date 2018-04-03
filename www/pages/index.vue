@@ -89,6 +89,5 @@ export default {
 <style lang="scss" scoped>
 .main {
   margin: 0;
-  background-color: $main-background-color;
 }
 </style>

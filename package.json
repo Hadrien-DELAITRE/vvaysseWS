@@ -18,6 +18,7 @@
     "vue-affix": "^0.2.4",
     "vue-awesome": "^2.3.5",
     "vue-lazyload": "^1.2.2",
+    "vue-masonry": "^0.10.17",
     "vue-svg-loader": "^0.5.0",
     "webpack-node-externals": "^1.6.0"
   },
@@ -43,9 +44,7 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
   },
-  "pre-commit": [
-    "lint"
-  ],
+  "pre-commit": ["lint"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Hadrien-DELAITRE/vvaysseWS.git"

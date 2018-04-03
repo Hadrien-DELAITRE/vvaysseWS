@@ -6,7 +6,6 @@
       class="portfolio"
     >
       <div class="yearTitle">
-        <icon name="calendar" class="calendar" scale="1.3" />
         <h2 class="year">{{ year }}</h2>
       </div>
       <ImageList :images="images"/>
@@ -48,18 +47,17 @@ export default {
 
     border-bottom: 8px solid $icon-foreground-color;
 
-    .calendar {
-      color: $icon-foreground-color;
-      margin-right: 5px;
-    }
-
     .year {
       font-family: "Roboto Condensed";
-      font-weight: 500;
-      font-size: 26px;
+      font-weight: 600;
+      font-size: 34px;
       color: white;
 
       margin: 0;
+
+      @media #{$breakpoint-xs-s} {
+        font-size: 26px;
+      }
     }
   }
 }
