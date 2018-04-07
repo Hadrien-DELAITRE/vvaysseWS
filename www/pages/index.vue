@@ -1,5 +1,5 @@
 <template>
-  <main class="main">
+  <main>
     <Menu />
     <Portfolio :portfolio="portfolio"/>
     <ExpandedImage />
@@ -85,9 +85,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.main {
-  margin: 0;
-}
-</style>

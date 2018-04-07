@@ -28,3 +28,12 @@ body {
   margin: 0;
   background-color: $main-background-color;
 }
+
+a {
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
