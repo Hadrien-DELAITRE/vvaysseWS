@@ -14,7 +14,7 @@ $menu-sticky-padding: 3px;
   }
 }
 
-.title {
+.menu {
   z-index: $menu-sticky-index;
 
   // Performance issue, for more informations
@@ -27,6 +27,22 @@ $menu-sticky-padding: 3px;
   padding-top: $menu-padding;
   display: flex;
   justify-content: center;
+  max-width: $S;
+  margin: 0 auto;
+
+  .title {
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    font-weight: 600;
+    overflow: hidden;
+  }
 
   h1 {
     margin: 0;
@@ -45,7 +61,7 @@ $menu-sticky-padding: 3px;
     align-items: center;
     box-shadow: 0px 1px 1px 1px $shadow-color;
     border: 1px solid $menu-circle-outline-color;
-    animation: opacityAnimate 1.2s ease-out;
+    animation: opacityAnimate 0.6s ease-out;
 
     // Defines logo circle color.
     &::before {
@@ -79,10 +95,10 @@ $menu-sticky-padding: 3px;
       // logo.
       display: block;
 
-      &.top-v {
+      &.topV {
         margin-left: 3px;
       }
-      &.bot-v {
+      &.botV {
         margin-left: -3px;
       }
     }
@@ -95,8 +111,15 @@ $menu-sticky-padding: 3px;
     left: 0;
     right: 0;
     background-color: $main-background-color;
-    display: block;
+    display: flex;
     animation: stickyAnimate 0.3s ease-out;
+    justify-content: flex-start;
+    max-width: none;
+
+    .nav {
+      flex: none;
+      margin-left: 10px;
+    }
 
     h1 {
       width: $menu-sticky-size - 2 * $menu-sticky-padding;
