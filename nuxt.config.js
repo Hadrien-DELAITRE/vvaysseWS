@@ -1,5 +1,4 @@
 const nodeExternals = require("webpack-node-externals")
-const webpack = require("webpack")
 
 const { config } = require("./package.json")
 
@@ -48,14 +47,10 @@ module.exports = {
         loader: "vue-svg-loader",
         exclude: /node_modules/
       })
-    },
-    plugins: [
-      new webpack.ProvidePlugin({
-        _: "lodash"
-      })
-    ]
+    }
   },
   plugins: [
+    "~plugins/lodash.js",
     "~plugins/vueAwesome.js",
     "~plugins/vueLazyload.js",
     { src: "~/plugins/vueMasonry", ssr: false }
