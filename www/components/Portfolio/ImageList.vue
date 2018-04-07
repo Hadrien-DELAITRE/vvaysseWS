@@ -40,6 +40,15 @@ export default {
   },
 
   /**
+   * Initializes the throttle behavior for scrolling event handler.
+   */
+  created() {
+    this.redrawVueMasonry = () => {
+      this.$redrawVueMasonry()
+    }
+  },
+
+  /**
    * Called after the instance has been mounted, where el is replaced by the
    * newly created vm.$el. If the root instance is mounted to an in-document
    * element, vm.$el will also be in-document when mounted is called.
@@ -52,10 +61,11 @@ export default {
     if (typeof this.$redrawVueMasonry === "function") {
       this.$redrawVueMasonry()
     }
+    this.$Lazyload.$on("loaded", this.redrawVueMasonry)
+  },
 
-    this.$Lazyload.$on("loaded", () => {
-      this.$redrawVueMasonry()
-    })
+  beforeDestroy() {
+    this.$Lazyload.$off("loaded", this.redrawVueMasonry)
   }
 }
 </script>
