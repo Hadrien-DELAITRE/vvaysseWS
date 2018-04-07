@@ -1,0 +1,86 @@
+.categoryWrapper {
+  max-width: $cv-max-width;
+  margin: 0 auto;
+
+  .category {
+    font-family: "Roboto Condensed";
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+
+    p {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .name {
+      font-size: 20px;
+      margin-bottom: 10px;
+      text-decoration: underline;
+    }
+
+    .stories {
+      width: 100%;
+
+      .line {
+        display: flex;
+
+        // Dates use fixed "min-width" in order to standardize CV to the left.
+        .dates {
+          min-width: 70px;
+          text-align: right;
+          margin-right: 10px;
+          font-weight: 500;
+          font-size: 16px;
+
+          p {
+            display: inline-block;
+          }
+
+          .dateRange {
+            margin-left: 5px;
+
+            &::before {
+              content: "-";
+              display: inline;
+              position: absolute;
+              margin-left: -4px;
+            }
+
+            @media #{$breakpoint-xs-s} {
+              margin-left: 0px;
+
+              &::before {
+                content: "";
+              }
+            }
+          }
+
+          @media #{$breakpoint-xs-s} {
+            width: 31px;
+            min-width: 31px;
+          }
+        }
+        .description {
+          padding-bottom: 15px;
+          width: 100%;
+          font-weight: 400;
+          color: $typo-color;
+
+          .highlight {
+            color: white;
+          }
+
+          .italic {
+            font-style: italic;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
