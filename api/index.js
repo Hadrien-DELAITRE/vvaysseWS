@@ -5,6 +5,7 @@ import url from "url"
 import { middleware as cache } from "apicache"
 import errorHandler from "api-error-handler"
 import bodyParser from "body-parser"
+import cors from "cors"
 import express from "express"
 import findUp from "find-up"
 import _ from "lodash"
@@ -30,11 +31,20 @@ const { hostname, port, protocol } = config.api
 
 const api = express()
 
+// Defines cors origin.
+api.use(
+  cors({
+    origin: url.format({
+      host: config.www.hostname,
+      protocol: config.www.protocol
+    })
+  })
+)
+
 // Specifies our API to use JSON as content-type formatting.
 api.use(bodyParser.json())
 
 // Serves portfolio on static server files.
-
 api.use(
   PORTFOLIO_STATIC_URL,
   express.static(config.api.images.portfolioDirPath)
