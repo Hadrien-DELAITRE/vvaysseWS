@@ -6,6 +6,7 @@
       :key="index"
       :category="category"
     />
+    <Footer />
   </main>
 </template>
 
@@ -13,12 +14,14 @@
 import { stripIndents } from "common-tags"
 
 import Category from "~/components/Cv/Category.vue"
+import Footer from "~/components/Footer/Footer.vue"
 import Menu from "~/components/Menu/Menu.vue"
 
 export default {
   components: {
     Category,
-    Menu
+    Menu,
+    Footer
   },
 
   /**

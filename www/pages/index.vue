@@ -3,6 +3,7 @@
     <Menu />
     <Portfolio :portfolio="portfolio"/>
     <ExpandedImage />
+    <Footer />
   </main>
 </template>
 
@@ -14,6 +15,7 @@ import axios from "axios"
 import _ from "lodash"
 
 import ExpandedImage from "~/components/ExpandedImage/ExpandedImage.vue"
+import Footer from "~/components/Footer/Footer.vue"
 import Portfolio from "~/components/Portfolio/Portfolio.vue"
 import Menu from "~/components/Menu/Menu.vue"
 
@@ -23,7 +25,8 @@ export default {
   components: {
     Menu,
     Portfolio,
-    ExpandedImage
+    ExpandedImage,
+    Footer
   },
 
   /**
