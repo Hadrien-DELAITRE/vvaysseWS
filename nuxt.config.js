@@ -25,7 +25,7 @@ module.exports = {
   ],
   serverMiddleware: ["~/serverMiddleware/config"],
   build: {
-    vendor: ["vue-awesome", "vue-lazyload"],
+    vendor: ["vue-lazyload"],
     extend(config, { isServer }) {
       if (isServer) {
         config.externals = [
@@ -37,21 +37,10 @@ module.exports = {
           })
         ]
       }
-      const urlLoader = config.module.rules.find(
-        rule => rule.loader === "url-loader"
-      )
-      urlLoader.test = /\.(png|jpe?g|gif)$/
-
-      config.module.rules.push({
-        test: /\.svg$/,
-        loader: "vue-svg-loader",
-        exclude: /node_modules/
-      })
     }
   },
   plugins: [
     "~plugins/lodash.js",
-    "~plugins/vueAwesome.js",
     "~plugins/vueLazyload.js",
     { src: "~/plugins/vueMasonry", ssr: false }
   ],
