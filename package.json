@@ -15,7 +15,9 @@
     "express": "^4.16.3",
     "find-up": "^2.1.0",
     "http-proxy": "^1.16.2",
+    "jimp": "^0.2.28",
     "lodash": "^4.17.5",
+    "minimist": "^1.2.0",
     "nuxt": "^1.4.0",
     "nuxt-sass-resources-loader": "^1.2.0",
     "sass-loader": "^6.0.7",
@@ -38,9 +40,17 @@
     "prettier": "^1.11.1"
   },
   "scripts": {
-    "www": "node ./www/index.js",
-    "api": "BACKPACK_ENTRY=api backpack",
-    "proxy": "BACKPACK_ENTRY=proxy backpack",
+    "www-dev": "node ./www/index.js",
+    "www-prod":
+      "NODE_ENV=production nuxt build && NODE_ENV=production node ./www/index.js",
+    "api-dev": "BACKPACK_ENTRY=api backpack",
+    "api-prod":
+      "NODE_ENV=production BACKPACK_ENTRY=api backpack build && NODE_ENV=production node ./build/api.js",
+    "proxy-dev": "BACKPACK_ENTRY=proxy backpack",
+    "proxy-prod":
+      "NODE_ENV=production BACKPACK_ENTRY=proxy backpack build && NODE_ENV=production node ./build/proxy.js",
+    "resizer":
+      "BACKPACK_ENTRY=resizer backpack build && node ./build/resizer.js",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
   },
@@ -61,9 +71,11 @@
       "port": 7000,
       "protocol": "http:",
       "srcDir": "api",
+      "prefix": "api",
       "images": {
         "cache": "1 minute",
-        "portfolioDirPath": "api/portfolio"
+        "portfolioDirPath": "api/portfolio",
+        "resizerFolderName": "small"
       }
     },
     "www": {

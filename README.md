@@ -27,24 +27,30 @@ $> cd vvaysseWS
 $> npm install
 ```
 
-In order to run servers (in development mode for the moment):
+In order to run servers:
 
 * WWW server, listening on `${protocol}//${hostname}:${port}` by default http://www.vvaysse.com:7070, see [configuration](#configuration).
 
 ```sh
-$> npm run www
+$> npm run www-dev
+// Or for production
+$> npm run www-prod
 ```
 
 * API server, listening on `${protocol}//${hostname}:${port}` by default http://api.vvaysse.com:7000, see [configuration](#configuration):
 
 ```sh
-$> npm run api
+$> npm run api-dev
+// Or for production
+$> npm run api-prod
 ```
 
 * PROXY server, listening on `${protocol}//${hostname}:${port}` by default http://www.vvaysse.com:80, see [configuration](#configuration):
 
 ```sh
-$> npm run proxy
+$> npm run proxy-dev
+// Or for production
+$> npm run proxy-prod
 ```
 
 ## Development
@@ -77,12 +83,15 @@ It provides a property `config`:
     "port": 1234, // [integer] Port portion of the URL.
     "protocol": "http:", // [string] Protocol portion of the URL.
     "srcDir": "api", // [string] Url path of source API folder.
+    "prefix": "api", // [string] Prefix used for API URL path.
     "images": {
       // [string] Duration of images route cache ([length] [unit] as "10
       // minutes" or "1 day").
       "cache": "1 minute",
       // [string] Url path of portfolio images.
       "portfolioDirPath": "foo/bar/baz",
+      // [string] name of folder that will be created for resizer images script.
+      "resizerFolderName": "small"
     }
   },
   "www": {
@@ -118,4 +127,16 @@ Following schema presents how incoming HTTP requests are handled.
                      +-------------+------>     |
                                           |:7070|
                                           +-----+
+```
+
+## Scripts
+
+### Resizer
+
+Resizes provided URL file path or URL folder path with 460 width:
+
+```sh
+$> npm run resizer -- --file api/portfolio/foo.jpeg
+// Or
+$> npm run resizer -- --file api/portfolio
 ```

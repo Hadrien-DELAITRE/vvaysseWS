@@ -16,6 +16,8 @@ import asyncError from "./middlewares/asyncError"
 
 Promise.promisifyAll(fs)
 
+const router = express.Router()
+
 // Defines portfolio static URL.
 const PORTFOLIO_STATIC_URL = "/portfolio"
 
@@ -32,7 +34,7 @@ const { hostname, port, protocol } = config.api
 const api = express()
 
 // Defines cors origin.
-api.use(
+router.use(
   cors({
     origin: url.format({
       host: config.www.hostname,
@@ -42,10 +44,10 @@ api.use(
 )
 
 // Specifies our API to use JSON as content-type formatting.
-api.use(bodyParser.json())
+router.use(bodyParser.json())
 
 // Serves portfolio on static server files.
-api.use(
+router.use(
   PORTFOLIO_STATIC_URL,
   express.static(config.api.images.portfolioDirPath)
 )
@@ -62,25 +64,43 @@ api.use(
  * @param  {Object} res HTTP response to send.
  * @return {Array<Object>} Returns all filenames.
  */
-api.get(
+router.get(
   "/images",
   cache(config.api.images.cache),
   asyncError(async function(req, res) {
     const images = await listFilesFromDirPath(IMAGES_DIR_PATH)
     res.send(
       _.map(images, ({ fileName }) => ({
-        imageUrlPath: url.format({
-          hostname,
-          protocol,
-          pathname: path.join(PORTFOLIO_STATIC_URL, fileName)
-        })
+        imageUrlPath: {
+          default: url.format({
+            hostname,
+            protocol,
+            pathname: path.join(
+              config.api.prefix,
+              PORTFOLIO_STATIC_URL,
+              fileName
+            )
+          }),
+          small: url.format({
+            hostname,
+            protocol,
+            pathname: path.join(
+              config.api.prefix,
+              PORTFOLIO_STATIC_URL,
+              config.api.images.resizerFolderName,
+              fileName
+            )
+          })
+        }
       }))
     )
   })
 )
 
 // Defines error handler middleware for JSON result.
-api.use(errorHandler())
+router.use(errorHandler())
+
+api.use(`/${config.api.prefix}`, router)
 
 // Starts API with port and hostname retrieved from config.
 api.listen(port, hostname, function() {

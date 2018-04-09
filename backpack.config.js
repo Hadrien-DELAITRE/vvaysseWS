@@ -4,6 +4,7 @@ const { config } = require("./package.json")
 
 const entries = {
   api: path.join(__dirname, config.api.srcDir, "index.js"),
+  resizer: path.join(__dirname, config.api.srcDir, "scripts", "resizer.js"),
   proxy: path.join(__dirname, config.proxy.srcDir, "index.js")
 }
 

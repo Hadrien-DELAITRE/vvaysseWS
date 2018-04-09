@@ -1,5 +1,7 @@
-import express from "express"
 import url from "url"
+
+import _ from "lodash"
+import express from "express"
 
 import httpProxy from "http-proxy"
 
@@ -49,7 +51,10 @@ const reverseProxy = express()
  * @return {String} Matched HTML page to send.
  */
 reverseProxy.use("/", function(req, res) {
-  if (req.get("host") === apiConfig.hostname) {
+  if (
+    req.get("host") === apiConfig.hostname &&
+    _.includes(req.path, `/${apiConfig.prefix}/`)
+  ) {
     proxy.web(req, res, { target: apiUrl }, function(error) {
       res.status(500).send(error.message)
     })
