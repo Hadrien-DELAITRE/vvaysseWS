@@ -25,7 +25,6 @@ module.exports = {
   ],
   serverMiddleware: ["~/serverMiddleware/config"],
   build: {
-    vendor: ["vue-lazyload"],
     extend(config, { isServer }) {
       if (isServer) {
         config.externals = [
@@ -39,11 +38,7 @@ module.exports = {
       }
     }
   },
-  plugins: [
-    "~plugins/lodash.js",
-    "~plugins/vueLazyload.js",
-    { src: "~/plugins/vueMasonry", ssr: false }
-  ],
+  plugins: ["~plugins/lodash.js", { src: "~/plugins/vueMasonry", ssr: false }],
   css: [
     "@/assets/css/animations.scss",
     "@/assets/css/colors.scss",

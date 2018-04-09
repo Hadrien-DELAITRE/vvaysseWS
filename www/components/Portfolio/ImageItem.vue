@@ -1,7 +1,7 @@
 <template>
   <li class="imageItem">
     <img
-      :data-src="`${image.imageUrlPath}`"
+      :src="`${image.imageUrlPath.small}`"
       class="thumbnailImage"
       @click="expand" />
   </li>
@@ -27,7 +27,7 @@ export default {
     expand: function() {
       this.$store.commit("toggle", {
         isExpanded: true,
-        imageUrlPath: this.image.imageUrlPath
+        imageUrlPath: this.image.imageUrlPath.default
       })
     }
   }

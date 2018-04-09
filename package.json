@@ -23,7 +23,6 @@
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
     "vue-affix": "^0.2.4",
-    "vue-lazyload": "^1.2.2",
     "vue-masonry": "^0.11.1",
     "webpack-node-externals": "^1.6.0"
   },

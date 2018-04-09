@@ -2,7 +2,6 @@
   <div>
     <div class="imageListWrapper">
       <ul
-        v-lazy-container="{ selector: 'img' }"
         v-masonry
         transition-duration="0.5s"
         percent-position="true"
@@ -40,37 +39,23 @@ export default {
   },
 
   /**
-   * Initializes the throttle behavior for scrolling event handler.
-   */
-  created() {
-    this.redrawVueMasonry = () => {
-      this.$redrawVueMasonry()
-    }
-  },
-
-  /**
    * Called after the instance has been mounted, where el is replaced by the
    * newly created vm.$el. If the root instance is mounted to an in-document
    * element, vm.$el will also be in-document when mounted is called.
    *
    * In our implementation, we use it in order to re-render mansory layout when
    * - Vue component is mounted;
-   * - Any lazyloaded image is correctly loaded.
    */
   mounted() {
     if (typeof this.$redrawVueMasonry === "function") {
       this.$redrawVueMasonry()
     }
-    this.$Lazyload.$on("loaded", this.redrawVueMasonry)
-  },
-
-  beforeDestroy() {
-    this.$Lazyload.$off("loaded", this.redrawVueMasonry)
   }
 }
 </script>
 <style lang="scss" scoped>
 .imageListWrapper {
+  min-height: 150px;
   display: flex;
   flex-wrap: wrap;
 

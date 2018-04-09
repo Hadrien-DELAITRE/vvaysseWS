@@ -43,11 +43,11 @@ export default {
    * @return {Object} Returns images from HTTP API result.
    */
   async asyncData({ store }) {
-    const { hostname, protocol } = store.state.config.app.api
+    const { hostname, protocol, prefix } = store.state.config.app.api
     const imagesApiUrl = url.format({
       hostname,
       protocol,
-      pathname: "images"
+      pathname: path.join(prefix, "images")
     })
     const { data: images } = await axios.get(imagesApiUrl).catch(() => ({
       data: []
@@ -59,7 +59,9 @@ export default {
     const imagesByYear = _.reduce(
       images,
       (result, { imageUrlPath }) => {
-        const matchingWords = path.basename(imageUrlPath).match(yearRegex)
+        const matchingWords = path
+          .basename(imageUrlPath.default)
+          .match(yearRegex)
         if (_.isNil(matchingWords)) {
           return result
         }
