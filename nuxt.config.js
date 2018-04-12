@@ -6,14 +6,20 @@ const { config } = require("./package.json")
 // https://fr.nuxtjs.org/guide/configuration/
 module.exports = {
   head: {
+    title: "Victor Vaysse",
     meta: [
       { charset: "utf-8" },
       {
         name: "viewport",
         content:
           "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+      },
+      {
+        name: "description",
+        content: "Découvrez les dernières créations de Victor Vaysse"
       }
-    ]
+    ],
+    link: [{ rel: "shortcut icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
   dev: process.env.NODE_ENV !== "production",
   srcDir: config.www.srcDir,
