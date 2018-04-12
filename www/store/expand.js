@@ -26,7 +26,7 @@ const mutations = {
    * @param {Boolean} isExpanded Whether an image is expanded or not.
    * @param {String} imageUrlPath Image URL path of expanded image.
    */
-  toggle: function(state, { isExpanded, imageUrlPath }) {
+  toggleExpand: function(state, { isExpanded, imageUrlPath }) {
     state.isExpanded = isExpanded
     state.imageUrlPath = imageUrlPath
   }

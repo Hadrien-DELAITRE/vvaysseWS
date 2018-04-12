@@ -38,26 +38,36 @@ export default {
 
   .yearTitle {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     margin-bottom: 2px;
     margin-left: 10px;
     margin-right: 10px;
 
-    border-bottom: 8px solid $icon-foreground-color;
+    border-bottom: 8px solid $border-foreground-color;
+    transition: border-color $toggle-style-time-ease;
 
     .year {
       font-family: "Roboto Condensed";
       font-weight: 600;
-      font-size: 34px;
-      color: white;
+      font-size: 30px;
+      color: $main-background-color-light;
+      transition: color $toggle-style-time-ease;
 
       margin: 0;
 
       @media #{$breakpoint-xs-s} {
         font-size: 26px;
       }
+
+      .main--light & {
+        color: $typo-color-title;
+      }
+    }
+
+    .main--light & {
+      border-color: $typo-color-highlight-light;
     }
   }
 }

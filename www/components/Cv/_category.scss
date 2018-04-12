@@ -5,6 +5,7 @@
   .category {
     font-family: "Roboto Condensed";
     color: white;
+    transition: color $toggle-style-time-ease;
 
     display: flex;
     flex-direction: column;
@@ -64,23 +65,49 @@
             width: 31px;
             min-width: 31px;
           }
+
+          .main--light & {
+            font-weight: 600;
+          }
         }
         .description {
           padding-bottom: 15px;
           width: 100%;
           font-weight: 400;
           color: $typo-color;
+          transition: color $toggle-style-time-ease;
 
           .highlight {
             color: white;
+            transition: color $toggle-style-time-ease;
+
+            .main--light & {
+              color: $typo-color-highlight-light;
+              font-weight: 600;
+            }
           }
 
           .italic {
             font-style: italic;
             color: white;
+            transition: color $toggle-style-time-ease;
+
+            .main--light & {
+              color: $typo-color-highlight-light;
+              font-weight: 600;
+            }
+          }
+
+          .main--light & {
+            color: $typo-color-light;
           }
         }
       }
+    }
+
+    .main--light & {
+      color: $typo-color-highlight-light;
+      font-weight: 600;
     }
   }
 }

@@ -26,6 +26,8 @@ export default {
   background-color: $footer-background-color;
   padding: 10px;
   text-align: center;
+  transition: color $toggle-style-time-ease,
+    background-color $toggle-style-time-ease;
 
   p {
     margin: 0;
@@ -38,6 +40,14 @@ export default {
 
   .address {
     font-size: 12px;
+    .main--light & {
+      font-weight: 600;
+    }
+  }
+
+  .main--light & {
+    color: $typo-color-light;
+    background-color: white;
   }
 }
 </style>

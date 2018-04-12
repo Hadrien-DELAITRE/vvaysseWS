@@ -12,20 +12,20 @@ export default {
    */
   computed: {
     isExpanded() {
-      return this.$store.state.isExpanded.isExpanded
+      return this.$store.state.expand.isExpanded
     },
     imageUrlPath() {
-      return this.$store.state.isExpanded.imageUrlPath
+      return this.$store.state.expand.imageUrlPath
     }
   },
 
   methods: {
     /**
-     * Toggles "off" for expanding image using Vuex `isExpanded` store.
+     * Toggles "off" for expanding image using Vuex `expand` store.
      * It reset image URL path to null value.
      */
     expand: function() {
-      this.$store.commit("toggle", {
+      this.$store.commit("toggleExpand", {
         isExpanded: false,
         imageUrlPath: null
       })

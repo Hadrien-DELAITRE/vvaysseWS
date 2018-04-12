@@ -1,5 +1,5 @@
 <template>
-  <header :style="{ paddingTop: paddingTop + 'px' }">
+  <header :style="{ paddingTop: paddingTop + 'px' }" class="header">
     <div :class="{ sticky: isScrolled }" class="menu">
       <h1 v-if="isScrolled" :style="{ order: 1 }" class="title">
         <p>
@@ -22,12 +22,16 @@
       >
         {{ name }}
       </nuxt-link>
+      <ToggleStyle v-if="isScrolled" :style="{ order: menu.orderToggle.sticky }" class="toggleStyle" />
     </div>
+    <ToggleStyle v-if="!isScrolled" class="toggleStyle" />
   </header>
 </template>
 
 <script>
 import _ from "lodash"
+
+import ToggleStyle from "./ToggleStyle.vue"
 
 import styles from "./_menu.scss"
 
@@ -54,7 +58,7 @@ const orderLinks = (position, orderStart) => {
       ...link,
       order: {
         default: order,
-        sticky: position === "left" ? order + 1 : order - 1
+        sticky: position === "left" ? order + 1 : order
       },
       flex: 1 / _.size(links)
     }
@@ -64,6 +68,9 @@ const orderLinks = (position, orderStart) => {
 }
 
 export default {
+  components: {
+    ToggleStyle
+  },
   /**
    * @prop {Boolean} isScrolled Whether menu is scrolled or not.
    * @prop {Boolean} paddingTop Defines padding top CSS style for header tag.
@@ -74,8 +81,8 @@ export default {
       isScrolled: false,
       paddingTop: 0,
       menuLinks: [
-        { urlPath: "/", name: "Galerie", position: "left" },
-        { urlPath: "/cv", name: "CV", position: "right" }
+        { urlPath: "/", name: "Home", position: "left" },
+        { urlPath: "/cv", name: "About", position: "right" }
       ]
     }
   },
@@ -95,9 +102,10 @@ export default {
      * {
      *   orderLogo: 2,
      *   links: [
-     *     { urlPath: "/", name: "Gallerie", position: "left", flex: 0.5, order { default: 1, sticky: 2 }},
+     *     { urlPath: "/", name: "Home", position: "left", flex: 0.5, order { default: 1, sticky: 2 }},
      *     { urlPath: "/cv", name: "CV", position: "right", flex: 1, order { default: 3, sticky: 3 }},
-     *   ]
+     *   ],
+     *   orderToggle: { default: 4, sticky: 4 },
      * }
      * ```
      *
@@ -110,9 +118,14 @@ export default {
       const leftLinks = _.map(left, orderLinks("left", 1))
       const orderLogo = _.size(leftLinks) + 1
       const rightLinks = _.map(right, orderLinks("right", orderLogo + 1))
+      const orderToggle = {
+        default: _.last(rightLinks).order.default + 1,
+        sticky: _.last(rightLinks).order.sticky + 1
+      }
       return {
         orderLogo,
-        links: [...leftLinks, ...rightLinks]
+        links: [...leftLinks, ...rightLinks],
+        orderToggle
       }
     }
   },

@@ -16,12 +16,15 @@ $breakpoint-m-max: "screen and (max-width: #{$M - 1})";
 
 // Defines style indexes.
 $image-expanded-index: 2000000;
+$menu-toggle-index: 1001000;
 $menu-sticky-index: 1000000;
-$menu-logo-circle-index: -1;
-$menu-logo-circle-shadow-index: -2;
 
 // Defines style gutter.
 $image-list-gutter: 10px;
 
 // Defines max-widths
 $cv-max-width: 630px;
+
+// Defines transition time and ease function behavior for switch between light &
+// dark style.
+$toggle-style-time-ease: 0.5s linear;

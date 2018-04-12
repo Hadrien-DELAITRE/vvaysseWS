@@ -2,19 +2,20 @@
 
 // Common colors.
 $main-background-color: #1f1f1f;
-$shadow-color: unquote("#00000066");
+$main-background-color-light: #faf9fa;
 
-// Menu colors.
-$menu-circle-outline-color: unquote("#00000040");
+// Menu color.
 $menu-circle-color: #d6d5d5;
-$menu-circle-inline-color: unquote("#0000008a");
 
-// Icons background & foreground color.
-$icon-background-color: unquote("#1f1f1f99");
-$icon-foreground-color: #585858;
+// background colors.
+$border-foreground-color: #585858;
 
 // Typo color.
 $typo-color: #989898;
+$typo-color-title: #797979;
+$typo-color-light: #888888;
+$typo-color-highlight-light: #484848;
 
 // Footer color.
 $footer-background-color: #151515;
+$footer-background-color-light: white;

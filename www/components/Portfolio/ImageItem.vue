@@ -21,11 +21,11 @@ export default {
 
   methods: {
     /**
-     * Toggles "on" for expanding image using Vuex `isExpanded` store.
+     * Toggles "on" for expanding image using Vuex `expand` store.
      * It provides data about image URL path.
      */
     expand: function() {
-      this.$store.commit("toggle", {
+      this.$store.commit("toggleExpand", {
         isExpanded: true,
         imageUrlPath: this.image.imageUrlPath.default
       })

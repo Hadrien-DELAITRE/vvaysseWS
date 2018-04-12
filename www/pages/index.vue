@@ -1,10 +1,10 @@
 <template>
-  <main>
+  <Main>
     <Menu />
     <Portfolio :portfolio="portfolio"/>
     <ExpandedImage />
     <Footer />
-  </main>
+  </Main>
 </template>
 
 <script>
@@ -16,17 +16,19 @@ import _ from "lodash"
 
 import ExpandedImage from "~/components/ExpandedImage/ExpandedImage.vue"
 import Footer from "~/components/Footer/Footer.vue"
-import Portfolio from "~/components/Portfolio/Portfolio.vue"
+import Main from "~/components/Main/Main.vue"
 import Menu from "~/components/Menu/Menu.vue"
+import Portfolio from "~/components/Portfolio/Portfolio.vue"
 
 const yearRegex = /^(\d{4}).*/
 
 export default {
   components: {
-    Menu,
-    Portfolio,
     ExpandedImage,
-    Footer
+    Footer,
+    Main,
+    Menu,
+    Portfolio
   },
 
   /**
