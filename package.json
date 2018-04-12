@@ -10,12 +10,14 @@
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "common-tags": "^1.7.2",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "css-loader": "^0.28.11",
     "express": "^4.16.3",
     "find-up": "^2.1.0",
     "http-proxy": "^1.16.2",
     "jimp": "^0.2.28",
+    "js-cookie": "^2.2.0",
     "lodash": "^4.17.5",
     "minimist": "^1.2.0",
     "nuxt": "^1.4.0",
@@ -24,6 +26,7 @@
     "style-loader": "^0.20.3",
     "vue-affix": "^0.2.4",
     "vue-masonry": "^0.11.1",
+    "vuex-persistedstate": "^2.5.2",
     "webpack-node-externals": "^1.6.0"
   },
   "devDependencies": {

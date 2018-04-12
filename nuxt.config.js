@@ -23,7 +23,7 @@ module.exports = {
     ["nuxt-sass-resources-loader", "@/assets/css/functions.scss"],
     ["nuxt-sass-resources-loader", "@/assets/css/variables.scss"]
   ],
-  serverMiddleware: ["~/serverMiddleware/config"],
+  serverMiddleware: ["~/serverMiddleware/config", "~/serverMiddleware/cookies"],
   build: {
     extend(config, { isServer }) {
       if (isServer) {
@@ -38,7 +38,11 @@ module.exports = {
       }
     }
   },
-  plugins: ["~plugins/lodash.js", { src: "~/plugins/vueMasonry", ssr: false }],
+  plugins: [
+    "~plugins/lodash.js",
+    { src: "~/plugins/vueMasonry", ssr: false },
+    { src: "~/plugins/localStorage", ssr: false }
+  ],
   css: [
     "@/assets/css/animations.scss",
     "@/assets/css/colors.scss",
