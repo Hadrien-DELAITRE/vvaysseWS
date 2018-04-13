@@ -1,6 +1,6 @@
 {
   "name": "vvayssews",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Victor Vaysse Website",
   "dependencies": {
     "@nuxtjs/axios": "^5.1.1",
