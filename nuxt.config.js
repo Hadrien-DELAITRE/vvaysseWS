@@ -35,10 +35,7 @@ module.exports = {
       if (isServer) {
         config.externals = [
           nodeExternals({
-            whitelist: [
-              /es6-promise|\.(?!(?:js|json)$).{1,5}$/i,
-              /^vue-awesome/
-            ]
+            whitelist: [/es6-promise|\.(?!(?:js|json)$).{1,5}$/i]
           })
         ]
       }
