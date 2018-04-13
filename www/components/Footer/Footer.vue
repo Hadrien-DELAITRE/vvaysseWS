@@ -1,21 +1,17 @@
 <template>
   <footer class="footer">
-    <p class="mail" >{{ mail }}</p>
-    <p class="address" >{{ address }}</p>
+    <Mail />
+    <Address />
   </footer>
 </template>
 
 <script>
+import Address from "../Contact/Address.vue"
+import Mail from "../Contact/Mail.vue"
 export default {
-  /**
-   * @prop {String} mail Mail of Victor Vaysse to display in footer.
-   * @prop {String} address Address of Victor Vaysse to display in footer.
-   */
-  data() {
-    return {
-      mail: "vaysse.victor@gmail.com",
-      address: "15 rue carnot, 93310, Le Pré-Saint-Gervais"
-    }
+  components: {
+    Address,
+    Mail
   }
 }
 </script>
@@ -28,22 +24,6 @@ export default {
   text-align: center;
   transition: color $toggle-style-time-ease,
     background-color $toggle-style-time-ease;
-
-  p {
-    margin: 0;
-  }
-
-  .mail {
-    font-style: italic;
-    margin-bottom: 5px;
-  }
-
-  .address {
-    font-size: 12px;
-    .main--light & {
-      font-weight: 600;
-    }
-  }
 
   .main--light & {
     color: $typo-color-light;

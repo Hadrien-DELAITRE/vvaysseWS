@@ -1,6 +1,7 @@
 <template>
   <Main>
     <Menu />
+    <Contact />
     <Category
       v-for="(category, index) in categories"
       :key="index"
@@ -14,6 +15,7 @@
 import { stripIndents } from "common-tags"
 
 import Category from "~/components/Cv/Category.vue"
+import Contact from "~/components/Contact/Contact.vue"
 import Footer from "~/components/Footer/Footer.vue"
 import Main from "~/components/Main/Main.vue"
 import Menu from "~/components/Menu/Menu.vue"
@@ -21,6 +23,7 @@ import Menu from "~/components/Menu/Menu.vue"
 export default {
   components: {
     Category,
+    Contact,
     Footer,
     Main,
     Menu

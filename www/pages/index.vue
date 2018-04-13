@@ -1,6 +1,7 @@
 <template>
   <Main>
     <Menu />
+    <Contact />
     <Portfolio :portfolio="portfolio"/>
     <ExpandedImage />
     <Footer />
@@ -14,6 +15,7 @@ import url from "url"
 import axios from "axios"
 import _ from "lodash"
 
+import Contact from "~/components/Contact/Contact.vue"
 import ExpandedImage from "~/components/ExpandedImage/ExpandedImage.vue"
 import Footer from "~/components/Footer/Footer.vue"
 import Main from "~/components/Main/Main.vue"
@@ -24,6 +26,7 @@ const yearRegex = /^(\d{4}).*/
 
 export default {
   components: {
+    Contact,
     ExpandedImage,
     Footer,
     Main,

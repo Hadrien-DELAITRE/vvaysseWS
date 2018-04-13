@@ -1,28 +1,28 @@
 <template>
   <header :style="{ paddingTop: paddingTop + 'px' }" class="header">
     <div :class="{ sticky: isScrolled }" class="menu">
-      <h1 v-if="isScrolled" :style="{ order: 1 }" class="title">
-        <p>
-          <span class="topV">V</span>
-          <span class="botV">V</span>
-        </p>
-      </h1>
-      <h1 v-else :style="{ order: menu.orderLogo }" class="title">
-        <p>
-          <span>Victor</span>
-          <span>Vaysse</span>
-        </p>
+      <h1 :style="isScrolled ? prefix({ order: 1 }) : prefix({ order: menu.orderLogo })" class="title">
+        <nuxt-link to="/" class="logo">
+          <p v-if="isScrolled">
+            <span class="topV">V</span>
+            <span class="botV">V</span>
+          </p>
+          <p v-else>
+            <span>Victor</span>
+            <span>Vaysse</span>
+          </p>
+        </nuxt-link>
       </h1>
       <nuxt-link
         v-for="({ order, flex, urlPath, name }, index) in menu.links"
         :key="index"
-        :style="isScrolled ? { order: order.sticky } : { order: order.default, flex: flex }"
+        :style="isScrolled ? prefix({ order: order.sticky }) : prefix({ order: order.default, flex: flex })"
         :to="urlPath"
         class="nav"
       >
         {{ name }}
       </nuxt-link>
-      <ToggleStyle v-if="isScrolled" :style="{ order: menu.orderToggle.sticky }" class="toggleStyle" />
+      <ToggleStyle v-if="isScrolled" :style="prefix({ order: menu.orderToggle.sticky })" class="toggleStyle" />
     </div>
     <ToggleStyle v-if="!isScrolled" class="toggleStyle" />
   </header>
@@ -88,6 +88,31 @@ export default {
   },
 
   computed: {
+    /**
+     * Computes inline style only for order and flex. It is done for old
+     * browser like Safari on iOS devices.
+     * @return {Object} Computed style with prefixed properties.
+     */
+    prefix() {
+      return style => {
+        const { order, flex } = style
+        return _.omitBy(
+          {
+            "-webkit-box-ordinal-group": order + 1,
+            "-webkit-order": order,
+            "-moz-box-ordinal-group": order + 1,
+            "-ms-flex-order": order,
+            order: order,
+            "-webkit-box-flex": flex,
+            "-webkit-flex": flex,
+            "-moz-box-flex": flex,
+            "-ms-flex": flex,
+            flex: flex
+          },
+          _.isNil
+        )
+      }
+    },
     /**
      * Computes menu object in order to display links correctly around logo.
      *

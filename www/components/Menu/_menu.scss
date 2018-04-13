@@ -23,7 +23,6 @@ $menu-sticky-padding: 3px;
     transform: translate3d(0, 0, 0);
 
     position: relative;
-    margin: 0;
     padding-bottom: $menu-padding;
     padding-top: $menu-padding;
     display: flex;
@@ -41,12 +40,21 @@ $menu-sticky-padding: 3px;
       display: flex;
       justify-content: center;
       align-self: center;
+      align-items: center;
       font-weight: 600;
       overflow: hidden;
       transition: color $toggle-style-time-ease;
 
       .main--light & {
-        color: #383838;
+        color: $typo-color-title-light;
+      }
+    }
+
+    a.logo {
+      text-decoration: none;
+
+      .main--light & {
+        color: $typo-color-title-light;
       }
     }
 
@@ -83,7 +91,7 @@ $menu-sticky-padding: 3px;
       }
 
       .main--light & {
-        color: #383838;
+        color: $typo-color-title-light;
       }
     }
 
@@ -99,6 +107,7 @@ $menu-sticky-padding: 3px;
       justify-content: flex-start;
       max-width: none;
       transition: background-color $toggle-style-time-ease;
+      height: auto;
 
       .nav {
         flex: none;
@@ -119,7 +128,7 @@ $menu-sticky-padding: 3px;
           color $toggle-style-time-ease;
 
         .main--light & {
-          border-color: #383838;
+          border-color: $typo-color-title-light;
         }
       }
 
@@ -128,9 +137,13 @@ $menu-sticky-padding: 3px;
         margin: 0;
         width: 100%;
         align-self: center;
+        align-items: center;
         display: flex;
         justify-content: flex-end;
-        flex-grow: 0;
+
+        // This property is need for an iOS safari support (displaying correctly
+        // the toggle moon/sun button).
+        flex-grow: 1;
         margin-right: 7px;
       }
 
