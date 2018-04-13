@@ -69,7 +69,7 @@
   "homepage": "https://github.com/Hadrien-DELAITRE/vvaysseWS#readme",
   "config": {
     "api": {
-      "hostname": "api.vvaysse.com",
+      "hostname": "api.victorvays.se",
       "port": 7000,
       "protocol": "http:",
       "srcDir": "api",
@@ -81,13 +81,13 @@
       }
     },
     "www": {
-      "hostname": "www.vvaysse.com",
+      "hostname": "victorvays.se",
       "port": 7070,
       "srcDir": "www",
       "protocol": "http:"
     },
     "proxy": {
-      "hostname": "www.vvaysse.com",
+      "hostname": "victorvays.se",
       "port": 80,
       "srcDir": "proxy",
       "protocol": "http:"
