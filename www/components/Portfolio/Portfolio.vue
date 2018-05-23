@@ -8,7 +8,12 @@
       <div class="yearTitle">
         <h2 class="year">{{ year }}</h2>
       </div>
-      <ImageList :images="images"/>
+      <ImageList
+        :images="images"
+        :is-lazyload-enabled="index !== 0"
+        :in-viewport-offset-top="100"
+        :in-viewport-once="true"
+      />
     </div>
   </div>
 </template>

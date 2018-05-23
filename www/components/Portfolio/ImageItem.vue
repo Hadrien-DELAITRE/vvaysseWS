@@ -1,9 +1,13 @@
 <template>
   <li class="imageItem">
     <img
-      :src="`${image.imageUrlPath.small}`"
+      :data-src="isLazyloadEnabled ? `${image.imageUrlPath.small}` : null"
+      :class="isImageLoaded ? '' : 'hide'"
+      :src="isImageReadyToLoad ? `${image.imageUrlPath.small}` : null"
       class="thumbnailImage"
-      @click="expand" />
+      @click="expand"
+      @load="onImageLoaded"
+    />
   </li>
 </template>
 
@@ -11,11 +15,47 @@
 export default {
   /**
    * @prop {Object} images Object image using `fileName` prop for filename.
+   * @prop {Function} masonry Handles all masonry framework.
+   * @prop {Function} isImageListInViewport Defines whether related image list
+   *                                        in viewport or not.
+   * @prop {Function} isLazyloadEnabled Defines whether lazyload image is
+   *                                        enabled or not.
    */
   props: {
     image: {
       type: Object,
       required: true
+    },
+    masonry: {
+      type: Object,
+      required: false,
+      default: null
+    },
+    isImageListInViewport: {
+      type: Boolean,
+      required: true
+    },
+    isLazyloadEnabled: {
+      type: Boolean,
+      required: true
+    }
+  },
+
+  data() {
+    return {
+      isImageReadyToLoad: !this.isLazyloadEnabled,
+      isImageLoaded: false
+    }
+  },
+
+  watch: {
+    isImageListInViewport: function(
+      nextIsImageListInViewport,
+      prevIsImageListInViewport
+    ) {
+      if (nextIsImageListInViewport && !prevIsImageListInViewport) {
+        this.isImageReadyToLoad = true
+      }
     }
   },
 
@@ -29,6 +69,10 @@ export default {
         isExpanded: true,
         imageUrlPath: this.image.imageUrlPath.default
       })
+    },
+    onImageLoaded: function() {
+      this.isImageLoaded = true
+      this.masonry.layout()
     }
   }
 }
@@ -36,6 +80,14 @@ export default {
 <style lang="scss" scoped>
 .imageItem {
   margin-bottom: $image-list-gutter / 2;
+
+  img {
+    transition: opacity 0.5s linear;
+  }
+
+  .hide {
+    opacity: 0;
+  }
 
   .thumbnailImage {
     // Performance issue, for more informations
